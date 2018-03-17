@@ -1,51 +1,23 @@
-# CakePHP Application Skeleton
+# Exchange Rates
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+## Introduction
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
-
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+Covert money into a different currency
 
 ## Installation
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+1. Run `composer install` to install dependencies
 
-If Composer is installed globally, run
+2. Copy `config/app.config.php` as `config/app.php` and fill database settings and Fixer.io api keys
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+3. Copy `dbv/config.php.sample` as `dbv/config.php` and fill database settings
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+4. Visit `http://localhost/dbv/` with default username/password as dbv/dbv. First pull all the schema into database and finally run `revision 0` to initialize tables with some data
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+5. Visit `http://localhost/` and your website is running perfectly now :)
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+## How do I get latest currencies available from the Fixer.io API and make them available to users?
 
-```bash
-bin/cake server -p 8765
-```
+There is a small shell script that get list of available currencies from fixer.io and save them into the database.
 
-Then visit `http://localhost:8765` to see the welcome page.
-
-## Update
-
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
-
-## Layout
-
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+Simply run `php bin/cake.php currency refresh` and it will fetch the list of available currency from Fixer.io and update them into our database. Next time when user will visit our site, he/she will get complete list of new currencies.
