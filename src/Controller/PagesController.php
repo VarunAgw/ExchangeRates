@@ -28,6 +28,13 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    /*
+     * Homepage
+     */
+    public function index()
+    {
+        return $this->redirect(['controller' => 'ExchangeRates', 'action' => 'index']);
+    }
 
     /**
      * Displays a view

@@ -354,4 +354,8 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+
+    'FixerIo' => [
+        'apiKey' => '',
+    ],
 ];
