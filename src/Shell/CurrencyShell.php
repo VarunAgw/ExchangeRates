@@ -24,9 +24,7 @@ class CurrencyShell extends Shell
     }
 
     /**
-     * Display help for this console.
-     *
-     * @return \Cake\Console\ConsoleOptionParser
+     * Refresh list of currency in database     
      */
     public function refresh() {
         $CurrenciesTable = TableRegistry::get('Currencies');
